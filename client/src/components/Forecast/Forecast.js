@@ -15,8 +15,10 @@ const Forecast = () => {
         },
       }
     )
+      // after the data is received from the API (*asynchronous)
+      .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        setResponseObj(response);
       })
       .catch((err) => {
         console.error(err);
