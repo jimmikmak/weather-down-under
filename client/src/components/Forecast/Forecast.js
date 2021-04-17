@@ -3,7 +3,9 @@ import Button from "@material-ui/core/Button";
 
 const Forecast = () => {
   const [responseObj, setResponseObj] = useState({});
-  function getForecast() {
+  function getForecast(e) {
+    e.preventDefault();
+
     fetch(
       "https://community-open-weather-map.p.rapidapi.com/weather?q=Sydney",
       {
@@ -34,4 +36,5 @@ const Forecast = () => {
     </div>
   );
 };
+
 export default Forecast;
