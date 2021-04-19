@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Conditions from "../Conditions/conditions";
 import Button from "@material-ui/core/Button";
 
 const Forecast = () => {
@@ -29,10 +30,10 @@ const Forecast = () => {
   return (
     <div>
       <h2>Find Current Weather Conditions</h2>
-      <div>{JSON.stringify(responseObj)}</div>
       <Button variant="contained" color="primary" onClick={getForecast}>
         Get Forecast
       </Button>
+      <Conditions responseObj={responseObj} />
     </div>
   );
 };
