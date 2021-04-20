@@ -3,7 +3,7 @@ import Conditions from "../Conditions/Conditions";
 import Button from "@material-ui/core/Button";
 
 const Forecast = () => {
-  let [city, setCity] = useState("");
+  let [city, setCity] = useState("Sydney");
   let [unit, setUnit] = useState("imperial");
   let [responseObj, setResponseObj] = useState({});
   function getForecast(e) {
