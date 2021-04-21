@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Conditions from "../Conditions/Conditions";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
   TextField,
@@ -37,12 +38,22 @@ const Forecast = () => {
         console.error(err);
       });
   }
+
+  const useStyles = makeStyles({
+    root: {
+      padding: "0 30px",
+      height: 50,
+    },
+  });
+  const classes = useStyles();
+
   return (
     <div>
       <h2>Find Current Weather Conditions</h2>
       <form onSubmit={getForecast}>
         <TextField
           id="outlined-basic"
+          maxLength="50"
           label="Enter City"
           variant="outlined"
           value={city}
@@ -68,7 +79,12 @@ const Forecast = () => {
             onChange={(e) => setUnit(e.target.value)}
           />
         </FormControl>
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          className={classes.root}
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
           Get Forecast
         </Button>
       </form>
