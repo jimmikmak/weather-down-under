@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import Conditions from "../Conditions/Conditions";
-import Button from "@material-ui/core/Button";
+import {
+  Button,
+  TextField,
+  FormControl,
+  FormControlLabel,
+  Radio,
+} from "@material-ui/core";
 
 const Forecast = () => {
-  let [city, setCity] = useState("Sydney");
+  let [city, setCity] = useState("");
   let [unit, setUnit] = useState("imperial");
   let [responseObj, setResponseObj] = useState({});
   function getForecast(e) {
@@ -34,9 +40,38 @@ const Forecast = () => {
   return (
     <div>
       <h2>Find Current Weather Conditions</h2>
-      <Button variant="contained" color="primary" onClick={getForecast}>
-        Get Forecast
-      </Button>
+      <form onSubmit={getForecast}>
+        <TextField
+          id="outlined-basic"
+          label="Enter City"
+          variant="outlined"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <FormControl component="fieldset">
+          <FormControlLabel
+            control={<Radio />}
+            label="Fahrenheit"
+            name="units"
+            checked={unit === "imperial"}
+            value="imperial"
+            onChange={(e) => setUnit(e.target.value)}
+          />
+        </FormControl>
+        <FormControl>
+          <FormControlLabel
+            control={<Radio />}
+            label="Celsius"
+            name="units"
+            checked={unit === "metric"}
+            value="metric"
+            onChange={(e) => setUnit(e.target.value)}
+          />
+        </FormControl>
+        <Button type="submit" variant="contained" color="primary">
+          Get Forecast
+        </Button>
+      </form>
       <Conditions responseObj={responseObj} />
     </div>
   );
