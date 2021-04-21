@@ -1,5 +1,5 @@
 import React from "react";
-
+// current temp -> city name -> conditions
 const conditions = (props) => {
   return (
     <div>
@@ -10,7 +10,7 @@ const conditions = (props) => {
           </p>
           <p>
             It is currently {Math.round(props.responseObj.main.temp)} degrees
-            out with {props.responseObj.weather[0].description}.
+            with {props.responseObj.weather[0].description}.
           </p>
         </div>
       ) : null}
