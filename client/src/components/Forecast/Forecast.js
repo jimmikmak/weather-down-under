@@ -13,8 +13,18 @@ const Forecast = () => {
   let [city, setCity] = useState("");
   let [unit, setUnit] = useState("imperial");
   let [responseObj, setResponseObj] = useState({});
+  let [error, setError] = useState(false);
+  let [loading, setLoading] = useState(false);
+
   function getForecast(e) {
     e.preventDefault();
+    if (city.length === 0) {
+      return setError(true);
+    }
+
+    setError(false);
+    setResponseObj({});
+    setLoading(true);
 
     const uriEncodedCity = encodeURIComponent(city);
 
@@ -23,26 +33,32 @@ const Forecast = () => {
       {
         method: "GET",
         headers: {
-          "x-rapidapi-key":
-            "18b0b2afc4mshc736424a2c7d6c3p16c6d8jsnd3bf40f8cfd9",
           "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
+          "x-rapidapi-key": process.env.REACT_APP_API_KEY,
         },
       }
     )
       // after the data is received from the API (*asynchronous)
       .then((response) => response.json())
       .then((response) => {
+        if (response.cod !== 200) {
+          throw new Error();
+        }
         setResponseObj(response);
+        setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        setError(true);
+        setLoading(false);
+        console.log(err.message);
       });
   }
 
   const useStyles = makeStyles({
     root: {
-      padding: "0 30px",
-      height: 50,
+      padding: ".5rem",
+      margin: "10px auto",
+      borderRadius: "5px",
     },
   });
   const classes = useStyles();
@@ -88,7 +104,7 @@ const Forecast = () => {
           Get Forecast
         </Button>
       </form>
-      <Conditions responseObj={responseObj} />
+      <Conditions responseObj={responseObj} error={error} loading={loading} />
     </div>
   );
 };
