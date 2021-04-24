@@ -83,7 +83,7 @@ const Forecast = () => {
           onChange={(e) => setCity(e.target.value)}
         />
         <FormControl component="fieldset">
-          <FormLabel component="legend">Measurement</FormLabel>
+          <FormLabel component="legend">Unit of Temperature</FormLabel>
           <RadioGroup aria-label="measurement" name="units">
             <FormControlLabel
               control={<Radio />}
@@ -104,9 +104,15 @@ const Forecast = () => {
         <Button type="submit" variant="contained" color="primary">
           Get Forecast
         </Button>
-        <Grid container spacing={1}>
+        <Grid container spacing={10}>
           <Grid item xs={12}>
-            <Paper className={classes.paper}>Conditions</Paper>
+            <Paper className={classes.paper}>
+              <Conditions
+                responseObj={responseObj}
+                error={error}
+                loading={loading}
+              />
+            </Paper>
           </Grid>
           <Grid container spacing={7}>
             <Grid item xs>
@@ -133,7 +139,6 @@ const Forecast = () => {
           </Grid>
         </Grid>
       </form>
-      <Conditions responseObj={responseObj} error={error} loading={loading} />
     </div>
   );
 };
