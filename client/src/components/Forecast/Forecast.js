@@ -6,7 +6,9 @@ import {
   TextField,
   FormControl,
   FormControlLabel,
+  RadioGroup,
   Radio,
+  FormLabel,
 } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -71,69 +73,69 @@ const Forecast = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+      <h2>Find Current Weather Conditions</h2>
+      <form onSubmit={getForecast}>
+        <TextField
+          id="outlined-basic"
+          label="Enter City"
+          variant="outlined"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <FormControl component="fieldset">
+          <FormLabel component="legend">Measurement</FormLabel>
+          <RadioGroup aria-label="measurement" name="units">
+            <FormControlLabel
+              control={<Radio />}
+              label="Fahrenheit"
+              checked={unit === "imperial"}
+              value="imperial"
+              onChange={(e) => setUnit(e.target.value)}
+            />
+            <FormControlLabel
+              control={<Radio />}
+              label="Celsius"
+              checked={unit === "metric"}
+              value="metric"
+              onChange={(e) => setUnit(e.target.value)}
+            />
+          </RadioGroup>
+        </FormControl>
+        <Button type="submit" variant="contained" color="primary">
+          Get Forecast
+        </Button>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>Conditions</Paper>
+          </Grid>
+          <Grid container spacing={7}>
+            <Grid item xs>
+              <Paper className={classes.paper}>MON</Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>TUES</Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>WED</Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>THURS</Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>FRI</Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>SAT</Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>SUN</Paper>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-      </Grid>
+      </form>
+      <Conditions responseObj={responseObj} error={error} loading={loading} />
     </div>
   );
-
-  // return (
-  //   <div>
-  //     <h2>Find Current Weather Conditions</h2>
-  //       <form onSubmit={getForecast}>
-  //           <input
-  //             type="text"
-  //             placeholder="Enter City"
-  //             maxLength="50"
-  //             value={city}
-  //             onChange={(e) => setCity(e.target.value)}
-  //           >
-  //         <label>
-  //           <input
-  //             type="radio"
-  //             name="units"
-  //             checked={unit === "imperial"}
-  //             value="imperial"
-  //             onChange={(e) => setUnit(e.target.value)}
-  //           />
-  //           Fahrenheit
-  //         </label>
-  //         <label>
-  //           <input
-  //             type="radio"
-  //             name="units"
-  //             checked={unit === "metric"}
-  //             value="metric"
-  //             onChange={(e) => setUnit(e.target.value)}
-  //           />
-  //           Celsius
-  //         </label>
-  //         <Button type="submit" variant="contained" color="primary">
-  //           Get Forecast
-  //         </Button>
-  //       </form>
-  //     <Conditions responseObj={responseObj} error={error} loading={loading} />
-  //   </div>
-  // );
 };
 
 export default Forecast;
