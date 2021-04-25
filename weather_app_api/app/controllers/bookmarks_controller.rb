@@ -19,11 +19,13 @@ class BookmarksController < ApplicationController
     end
 
     def update
-        
-        render json: {type: 'update'}
+        bookmark = Bookmark.find(params[:id])
+        bookmark.update(city: params[:city], country: params[:country], weather: params[:weather])
+        render json: {type: 'Successfully updated entry'}
     end
 
     def destroy
-        render json: {type: 'destroy'} 
+        Bookmark.destroy(params[:id])
+        render json: {message: 'Entry has been deleted'} 
     end
 end
