@@ -1,20 +1,25 @@
 class BookmarksController < ApplicationController
     def index
-        render json: {type: 'index'}
+        render json: Bookmark.all
     end
 
     def create
-        puts params[:city]
-        puts params[:country]
-        puts params[:conditions]
-        render json: {type: 'create'}
+        bookmark = Bookmark.create(city: params[:city], country: params[:country], weather: params[:weather])
+        bookmark_valid = bookmark.valid?
+        if bookmark_valid
+          render json: {message: 'Successfully created bookmark'}, status: 200
+        else
+          render json: {message: 'Unable to create bookmark'}, status: 400
+        end
     end
 
     def show
-        render json: {type: 'show'}
+        puts params[:id]
+        render json: Bookmark.find(params[:id])
     end
 
-    def destroy
+    def update
+        
         render json: {type: 'update'}
     end
 
