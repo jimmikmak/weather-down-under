@@ -4,6 +4,9 @@ class BookmarksController < ApplicationController
     end
 
     def create
+        puts params[:city]
+        puts params[:country]
+        puts params[:conditions]
         render json: {type: 'create'}
     end
 
