@@ -5,6 +5,17 @@ class ApplicationController < ActionController::API
     end
     
     def decode_token
+        auth_token = request_headers['Authorization']
+        if auth_token
+            token = auth_token.split[' ']
+            p "TOKEN"
+            p token
+            begin
+                JWT.decode token[1], 'top-secret-password-!@#$%'
+            rescue StandardError
+                nil
+            end
+        end
     end
 
 end
