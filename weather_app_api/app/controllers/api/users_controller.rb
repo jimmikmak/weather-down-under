@@ -1,16 +1,17 @@
 class Api::UsersController < ApplicationController
+    
     def index
         render json: User.all
     end
 
-def create
-    user = User.create(user_params)
-    if user_valid?
-        render json: user, status: 201
-    else
-        render json: {message: 'Unable to create user'}, status: 500
+    def create
+      user = User.create(user_params)
+      if user.valid?
+          render json: user, status: 201
+      else
+          render json: { message: 'Unable to create user' }, status: 500
+      end
     end
-end
 
     def show
         puts params[:id]
@@ -18,9 +19,7 @@ end
     end
 
     def update
-        bookmark = Bookmark.find(params[:id])
-        bookmark.update(city: params[:city], country: params[:country], weather: params[:weather])
-        render json: {type: 'Successfully updated entry'}
+       render json: User.find(params[:id]).update(user_params)
     end
 
     def destroy
