@@ -1,21 +1,31 @@
 class ApplicationController < ActionController::API
+  before_action :user_exists
 
-    def encode_token user_id
-        JWT.encode(user_id, 'top-secret-password-!@#$%')
+    def encode_token(user_id)
+        JWT.encode user_id, nil, 'none'
     end
     
     def decode_token
-        auth_token = request_headers['Authorization']
+        auth_token = request.headers['token']
         if auth_token
-            token = auth_token.split[' ']
-            p "TOKEN"
-            p token
+            p auth_token
             begin
-                JWT.decode token[1], 'top-secret-password-!@#$%'
+                JWT.decode token, nil, false
             rescue StandardError
+                p 'NIL'
                 nil
             end
         end
     end
 
+    def user_exists
+        valid = decode_token
+        p "valid"
+        p valid
+      if valid
+        true
+      else
+        render json: { message: 'Unauthorized' }, status: :unauthorized
+      end
+    end
 end

@@ -1,4 +1,6 @@
 class Api::BookmarksController < ApplicationController
+    before_action :user_exists
+
     def index
         render json: Bookmark.all
     end
