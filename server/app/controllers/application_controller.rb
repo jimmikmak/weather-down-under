@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
         if auth_token
             p auth_token
             begin
-                JWT.decode token, nil, false
+                JWT.decode auth_token, nil, false
             rescue StandardError
                 p 'NIL'
                 nil
