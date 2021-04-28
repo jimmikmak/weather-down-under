@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -9,7 +9,7 @@ import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -60,6 +60,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function UserForm() {
+  const [form, setForm] = useState({
+    name: "",
+    password: "",
+  });
+  const changeHandler = (e) => {
+    const newFormState = { ...form };
+    newFormState[e.target.name] = e.target.value;
+    console.log(newFormState);
+    setForm(newFormState);
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    fetch("/api/users", {
+      method: "POST",
+      body: JSON.stringify(form),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("login data:", data));
+  };
+
   const classes = useStyles();
 
   return (
@@ -69,22 +89,24 @@ export default function UserForm() {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <WbSunnyIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Weather Down Under
           </Typography>
-          <form className={classes.form} noValidate>
+          <form onSubmit={submitHandler} className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="name"
+              label="Name"
+              name="name"
+              autoComplete="name"
               autoFocus
+              value={form.name}
+              onChange={changeHandler}
             />
             <TextField
               variant="outlined"
@@ -96,6 +118,8 @@ export default function UserForm() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={form.password}
+              onChange={changeHandler}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
