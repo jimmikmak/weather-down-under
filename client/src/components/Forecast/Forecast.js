@@ -104,6 +104,9 @@ export const Forecast = () => {
         <Button type="submit" variant="contained" color="primary">
           Get Forecast
         </Button>
+        <Button variant="contained" color="secondary">
+          Bookmark City
+        </Button>
         <Grid container spacing={10}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
