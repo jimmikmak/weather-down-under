@@ -12,6 +12,7 @@ import Grid from "@material-ui/core/Grid";
 import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -59,7 +60,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const UserForm = () => {
+export const UserForm = (props) => {
+  const history = useHistory();
   const [form, setForm] = useState({
     name: "",
     password: "",
@@ -72,7 +74,7 @@ export const UserForm = () => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    fetch("/api/auth/login", {
+    fetch("http://localhost:3000/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +82,14 @@ export const UserForm = () => {
       body: JSON.stringify(form),
     })
       .then((response) => response.json())
-      .then((data) => console.log("login data:", data));
+      .then((data) => {
+        console.log(data);
+        props.setLoggedIn(true);
+        // only lead user to the main page if you get a token back
+        if (data.token) {
+          history.replace("/");
+        }
+      });
   };
 
   const classes = useStyles();
