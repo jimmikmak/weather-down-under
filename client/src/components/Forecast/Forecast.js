@@ -13,7 +13,7 @@ import {
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
-const Forecast = () => {
+export const Forecast = () => {
   let [city, setCity] = useState("");
   let [unit, setUnit] = useState("imperial");
   let [responseObj, setResponseObj] = useState({});
@@ -142,5 +142,3 @@ const Forecast = () => {
     </div>
   );
 };
-
-export default Forecast;

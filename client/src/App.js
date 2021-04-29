@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import Forecast from "./components/Forecast/Forecast";
-import UserForm from "./components/User/UserForm";
+import { Forecast } from "./components/Forecast/Forecast";
+import { UserForm } from "./components/User/UserForm";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {

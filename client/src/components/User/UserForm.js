@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserForm() {
+export const UserForm = () => {
   const [form, setForm] = useState({
     name: "",
     password: "",
@@ -72,8 +72,11 @@ export default function UserForm() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    fetch("/api/users", {
+    fetch("/api/auth/login", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(form),
     })
       .then((response) => response.json())
@@ -154,4 +157,4 @@ export default function UserForm() {
       </Grid>
     </Grid>
   );
-}
+};
