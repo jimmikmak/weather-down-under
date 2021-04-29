@@ -12,17 +12,17 @@ function App() {
           <Route exact path="/login">
             <UserForm />
           </Route>
-
-          <header className="App-header">
-            <h1>Weather Down Under</h1>
-          </header>
-
-          <main>
-            <Forecast />
-          </main>
-
-          <footer>Page created by James McCarron</footer>
         </Switch>
+
+        <header className="App-header">
+          <h1>Weather Down Under</h1>
+        </header>
+
+        <main>
+          <Forecast />
+        </main>
+
+        <footer>Page created by James McCarron</footer>
       </div>
     </BrowserRouter>
   );
