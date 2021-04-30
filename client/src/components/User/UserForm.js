@@ -83,6 +83,7 @@ export const UserForm = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        window.localStorage.setItem("token", data.token);
         console.log(data);
         props.setLoggedIn(true);
         // only lead user to the main page if you get a token back

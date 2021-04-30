@@ -26,15 +26,17 @@ main {
   flex-grow: 1;
   text-align: center;
   padding: 25px;
+  background-color: lightgray;
 }
 
 footer {
+  background-color: #282c34;
   padding: 2px;
   min-height: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #eeeeee;
+  color: white;
   font-size: small;
   text-align: center;
 }
