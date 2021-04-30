@@ -105,7 +105,7 @@ export const Forecast = () => {
           Get Forecast
         </Button>
         <Button variant="contained" color="secondary">
-          Bookmark City
+          Bookmark
         </Button>
         <Grid container spacing={10}>
           <Grid item xs={12}>

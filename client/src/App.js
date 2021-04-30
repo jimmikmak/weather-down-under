@@ -27,7 +27,6 @@ function App() {
         </main>
         <footer>Page created by James McCarron</footer>
       </div>
-      )
     </BrowserRouter>
   );
 }

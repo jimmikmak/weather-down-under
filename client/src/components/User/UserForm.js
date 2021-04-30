@@ -69,7 +69,6 @@ export const UserForm = (props) => {
   const changeHandler = (e) => {
     const newFormState = { ...form };
     newFormState[e.target.name] = e.target.value;
-    console.log(newFormState);
     setForm(newFormState);
   };
   const submitHandler = (e) => {
