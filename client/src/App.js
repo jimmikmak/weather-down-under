@@ -16,8 +16,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        {!loggedIn && <UserForm setLoggedIn={setLoggedIn} />}
         {/* find the syntax for Link and add a link for a user to click login */}
-        <Link to="/login" exact component={UserForm}></Link>
+
+        {
+          // commented out for now
+          /* <Link to="/login" exact component={UserForm}></Link> */
+        }
         <Switch>
           <Route exact path="/login">
             <UserForm setLoggedIn={setLoggedIn} />
@@ -26,13 +31,6 @@ function App() {
             <Forecast loggedIn={loggedIn} />
           </Route>
         </Switch>
-        <header className="App-header">
-          <h1>Weather Down Under</h1>
-        </header>
-        <main>
-          <Forecast />
-        </main>
-        <footer>Page created by James McCarron</footer>
       </div>
     </BrowserRouter>
   );
