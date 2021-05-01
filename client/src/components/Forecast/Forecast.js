@@ -73,6 +73,13 @@ export const Forecast = () => {
 
   return (
     <div className={classes.root}>
+      <header className="App-header">
+        <h1>Weather Down Under</h1>
+      </header>
+      {/* <main>
+          <Forecast />
+        </main> */}
+
       <h2>Find Current Weather Conditions</h2>
       <form onSubmit={getForecast}>
         <TextField
@@ -142,6 +149,7 @@ export const Forecast = () => {
           </Grid>
         </Grid>
       </form>
+      <footer>Page created by James McCarron</footer>
     </div>
   );
 };
