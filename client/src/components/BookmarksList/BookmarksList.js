@@ -3,17 +3,13 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export const BookmarksList = () => {
   const [bookMarksList, setBookMarksList] = useState([]);
+  let [city, setCity] = useState("");
+  let [unit, setUnit] = useState("imperial");
   let [responseObj, setResponseObj] = useState({});
   let [error, setError] = useState(false);
   let [loading, setLoading] = useState(false);
 
   function getForecast(city) {
-    // e.preventDefault();
-
-    // setError(false);
-    // setResponseObj({});
-    // setLoading(true);
-
     const uriEncodedCity = encodeURIComponent(city);
 
     fetch(

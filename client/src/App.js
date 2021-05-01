@@ -3,16 +3,12 @@ import { useState } from "react";
 import "./App.css";
 import { Forecast } from "./components/Forecast/Forecast";
 import { UserForm } from "./components/User/UserForm";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BookmarksList } from "./components/BookmarksList/BookmarksList";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  // const logInForm = React.forwardRef((props, ref) => (
-  //   <a ref={ref} {...props}>
-  //     {props.children}
-  //   </a>
-  // ));
   return (
     <BrowserRouter>
       <div className="App">
@@ -29,6 +25,9 @@ function App() {
           </Route>
           <Route exact path="/forecast">
             <Forecast loggedIn={loggedIn} />
+          </Route>
+          <Route exact path="/bookmarks">
+            <BookmarksList />
           </Route>
         </Switch>
       </div>
