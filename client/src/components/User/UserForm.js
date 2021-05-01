@@ -80,15 +80,30 @@ export const UserForm = (props) => {
       },
       body: JSON.stringify(form),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          console.log("bad response!");
+          history.replace("/");
+          return;
+        }
+
+        return response.json();
+      })
       .then((data) => {
+        console.log("this is the data that comes back", data);
         window.localStorage.setItem("token", data.token);
         console.log(data);
         props.setLoggedIn(true);
+        console.log("login set");
         // only lead user to the main page if you get a token back
         if (data.token) {
-          history.replace("/");
+          console.log("replacing with forecast");
+          history.replace("/forecast");
         }
+      })
+      .catch((e) => {
+        console.log("caught some error!!", e);
+        history.replace("/");
       });
   };
 
