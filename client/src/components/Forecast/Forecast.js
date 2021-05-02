@@ -75,7 +75,9 @@ export const Forecast = () => {
     <div className={classes.root}>
       <header className="App-header">
         <h1>Weather Down Under</h1>
-        <a href="#">Bookmark City</a>
+        <a className="btn btn-full" href="#">
+          Bookmark City
+        </a>
       </header>
       <h2>Find Current Weather Conditions</h2>
       <form onSubmit={getForecast}>
