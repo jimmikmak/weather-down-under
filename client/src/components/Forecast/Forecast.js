@@ -63,7 +63,7 @@ export const Forecast = () => {
       flexGrow: 1,
     },
     paper: {
-      padding: theme.spacing(2),
+      padding: theme.spacing(5),
       textAlign: "center",
       color: theme.palette.text.secondary,
     },
@@ -75,11 +75,8 @@ export const Forecast = () => {
     <div className={classes.root}>
       <header className="App-header">
         <h1>Weather Down Under</h1>
+        <a href="#">Bookmark City</a>
       </header>
-      {/* <main>
-          <Forecast />
-        </main> */}
-
       <h2>Find Current Weather Conditions</h2>
       <form onSubmit={getForecast}>
         <TextField
@@ -149,7 +146,7 @@ export const Forecast = () => {
           </Grid>
         </Grid>
       </form>
-      <footer>Page created by James McCarron</footer>
+      <footer className="App-footer">Page created by James McCarron</footer>
     </div>
   );
 };

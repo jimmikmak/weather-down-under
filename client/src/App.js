@@ -13,12 +13,6 @@ function App() {
     <BrowserRouter>
       <div className="App">
         {!loggedIn && <UserForm setLoggedIn={setLoggedIn} />}
-        {/* find the syntax for Link and add a link for a user to click login */}
-
-        {
-          // commented out for now
-          /* <Link to="/login" exact component={UserForm}></Link> */
-        }
         <Switch>
           <Route exact path="/login">
             <UserForm setLoggedIn={setLoggedIn} />
