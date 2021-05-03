@@ -12,16 +12,16 @@
 }
 
 /* --------------------------------------------- */
-/* HEADER */
+/* HEADERS */
 /* --------------------------------------------- */
 
 .App-header {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url(./images/AdobeStock_212573421.jpeg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(./images/AdobeStock_301983888.jpeg);
   background-size: cover;
   background-position: center;
-  height: 25vh;
-  min-height: 150px;
+  height: 17vh;
+  min-height: 125px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,6 +40,21 @@ h1 {
   word-spacing: 4px;
 }
 
+/* h2 {
+  text-align: center;
+  margin: 0;
+  color: #fff;
+  font-size: 50%;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 4px;
+} */
+
+/* --------------------------------------------- */
+/* BUTTONS */
+/* --------------------------------------------- */
+
 .btn {
   display: inline-block;
   padding: 10px 30px;
@@ -49,13 +64,18 @@ h1 {
   color: #fff;
 }
 
-.btn-full {
-  background-color: #2980b9;
-}
+/* --------------------------------------------- */
+/* FOOTER */
+/* --------------------------------------------- */
 
 .App-footer {
-  background-color: #282c34;
-  padding: 2px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(./images/AdobeStock_301983888.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-color: #333;
+  padding: 25px;
+  height: 10vh;
   min-height: 50px;
   display: flex;
   flex-direction: column;
@@ -66,4 +86,18 @@ h1 {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.main__form > fieldset {
+  display: flex;
+  align-items: center;
+  margin: 25px 0px;
+}
+
+.main__form > button {
+  margin: 10px;
+}
+
+.MuiTypography-h5 {
+  color: black;
 }
