@@ -75,7 +75,6 @@ h1 {
   background-position: center;
   background-color: #333;
   padding: 25px;
-  height: 10vh;
   min-height: 50px;
   display: flex;
   flex-direction: column;
@@ -83,9 +82,6 @@ h1 {
   color: white;
   font-size: small;
   text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
 }
 
 .main__form > fieldset {
@@ -100,4 +96,14 @@ h1 {
 
 .MuiTypography-h5 {
   color: black;
+}
+
+.stubborn__grid {
+  display: flex;
+  width: 90%;
+  margin: 0px auto 100px;
+}
+
+.stubborn__grid > div {
+  margin: 0px 10px;
 }
