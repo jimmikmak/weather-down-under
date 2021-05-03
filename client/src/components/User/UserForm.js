@@ -112,8 +112,8 @@ export const UserForm = (props) => {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={false} sm={6} md={6} className={classes.image} />
+      <Grid item xs={12} sm={6} md={6} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <WbSunnyIcon />
@@ -162,12 +162,12 @@ export const UserForm = (props) => {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              <Grid item xs={6}>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid item xs={6}>
                 <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
