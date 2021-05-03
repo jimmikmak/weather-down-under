@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import ButtonBase from "@material-ui/core/ButtonBase";
 
 export const Forecast = () => {
   let [city, setCity] = useState("");
@@ -63,8 +65,9 @@ export const Forecast = () => {
       flexGrow: 1,
     },
     paper: {
-      padding: theme.spacing(5),
-      textAlign: "center",
+      padding: theme.spacing(2),
+      margin: "auto",
+      maxWidth: 700,
       color: theme.palette.text.secondary,
     },
   }));
@@ -75,12 +78,12 @@ export const Forecast = () => {
     <div className={classes.root}>
       <header className="App-header">
         <h1>Weather Down Under</h1>
-        <a className="btn btn-full" href="#">
-          Bookmark City
-        </a>
+        {/* <a className="btn btn-full" href="#">
+        Bookmark City
+      </a> */}
       </header>
       <h2>Find Current Weather Conditions</h2>
-      <form onSubmit={getForecast}>
+      <form class="main__form" onSubmit={getForecast}>
         <TextField
           id="outlined-basic"
           label="Enter City"
@@ -107,11 +110,16 @@ export const Forecast = () => {
             />
           </RadioGroup>
         </FormControl>
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          className="btn-1"
+          type="submit"
+          variant="contained"
+          color="primary"
+        >
           Get Forecast
         </Button>
         <Button variant="contained" color="secondary">
-          Bookmark
+          Bookmark City
         </Button>
         <Grid container spacing={10}>
           <Grid item xs={12}>
@@ -123,7 +131,7 @@ export const Forecast = () => {
               />
             </Paper>
           </Grid>
-          <Grid container spacing={7}>
+          <Grid class="stubborn__grid">
             <Grid item xs>
               <Paper className={classes.paper}>MON</Paper>
             </Grid>
@@ -148,7 +156,10 @@ export const Forecast = () => {
           </Grid>
         </Grid>
       </form>
-      <footer className="App-footer">Page created by James McCarron</footer>
+      <footer className="App-footer">
+        <p>Page created by James McCarron</p>
+        <p>Copyright &copy; 2021 by Weather Down Under. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
