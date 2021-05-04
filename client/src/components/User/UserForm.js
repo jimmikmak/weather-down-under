@@ -98,6 +98,7 @@ export const UserForm = (props) => {
         // only lead user to the main page if you get a token back
         if (data.token) {
           console.log("replacing with forecast");
+          window.localStorage.setItem("token", data.token);
           history.replace("/forecast");
         }
       })
@@ -112,8 +113,8 @@ export const UserForm = (props) => {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={6} md={6} className={classes.image} />
-      <Grid item xs={12} sm={6} md={6} component={Paper} elevation={6} square>
+      <Grid item xs={false} sm={4} md={8} className={classes.image} />
+      <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <WbSunnyIcon />
