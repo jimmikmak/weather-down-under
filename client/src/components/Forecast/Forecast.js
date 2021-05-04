@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 
 export const Forecast = () => {
   let [city, setCity] = useState("");
@@ -19,6 +20,17 @@ export const Forecast = () => {
   let [responseObj, setResponseObj] = useState({});
   let [error, setError] = useState(false);
   let [loading, setLoading] = useState(false);
+
+  const saveBookmark = () => {
+    fetch("http://localhost:3000/api/bookmarks", {
+      method: "POST",
+      body: JSON.stringify({ city: city }),
+      headers: {
+        "Content-Type": "application/json",
+        token: window.localStorage.getItem("token"),
+      },
+    });
+  };
 
   function getForecast(e) {
     e.preventDefault();
@@ -76,9 +88,6 @@ export const Forecast = () => {
     <div className={classes.root}>
       <header className="App-header">
         <h1>Weather Down Under</h1>
-        {/* <a className="btn btn-full" href="#">
-        Bookmark City
-      </a> */}
       </header>
       <h2>Find Current Weather Conditions</h2>
       <form class="main__form" onSubmit={getForecast}>
@@ -116,11 +125,11 @@ export const Forecast = () => {
         >
           Get Forecast
         </Button>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={saveBookmark}>
           Bookmark City
         </Button>
         <Button variant="contained" color="secondary">
-          View Bookmarks
+          <Link to="/bookmarks">View Bookmarks</Link>
         </Button>
         <Grid container spacing={10}>
           <Grid item xs={12}>
