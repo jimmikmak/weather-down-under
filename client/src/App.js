@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import "./App.css";
 import { Forecast } from "./components/Forecast/Forecast";
 import { UserForm } from "./components/User/UserForm";
 import { BookmarksList } from "./components/BookmarksList/BookmarksList";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "./App.css";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
