@@ -12,8 +12,6 @@ import {
 } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import ButtonBase from "@material-ui/core/ButtonBase";
 
 export const Forecast = () => {
   let [city, setCity] = useState("");
@@ -114,12 +112,15 @@ export const Forecast = () => {
           className="btn-1"
           type="submit"
           variant="contained"
-          color="primary"
+          // color="primary"
         >
           Get Forecast
         </Button>
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="primary">
           Bookmark City
+        </Button>
+        <Button variant="contained" color="secondary">
+          View Bookmarks
         </Button>
         <Grid container spacing={10}>
           <Grid item xs={12}>
