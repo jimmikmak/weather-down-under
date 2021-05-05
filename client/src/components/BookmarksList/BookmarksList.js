@@ -38,57 +38,40 @@ export const BookmarksList = () => {
     },
   }));
 
-  function generate(element) {
-    return [0, 1, 2].map((value) =>
-      React.cloneElement(element, {
-        key: value,
-      })
-    );
-  }
-
   const classes = useStyles();
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
 
   return (
-    <div className={classes.root}>
-      <Grid item xs={12} md={6}>
-        <header className="App-header">
-          <h1>Bookmarks</h1>
-        </header>
-        <div className={classes.demo}>
-          <List dense={dense}>
-            {generate(
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <FolderIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary="Single-line item"
-                  secondary={secondary ? "Secondary text" : null}
-                />
-                <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
-              </ListItem>
-            )}
-          </List>
-        </div>
-      </Grid>
+    <div>
+      <header className="App-header">
+        <h1>Bookmarks</h1>
+      </header>
+      <div className={classes.root}>
+        <Grid item xs={12} md={6}>
+          <div className={classes.demo}>
+            <List>
+              {bookMarks.map((el) => (
+                <ListItem key={el.id}>
+                  <ListItemAvatar>
+                    <Avatar>
+                      <FolderIcon />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={el.city} />
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end" aria-label="delete">
+                      <DeleteIcon />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              ))}
+            </List>
+          </div>
+        </Grid>
+      </div>
       <footer className="App-footer">
         <p>Page created by James McCarron</p>
         <p>Copyright &copy; 2021 by Weather Down Under. All rights reserved.</p>
       </footer>
     </div>
-
-    // <ul>
-    //   {bookMarks.map((el) => (
-    //     <li key={el.id}>{el.city}</li>
-    //   ))}
-    // </ul>
   );
 };
