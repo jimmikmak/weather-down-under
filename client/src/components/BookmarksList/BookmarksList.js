@@ -26,23 +26,23 @@ export const BookmarksList = () => {
   }, []);
 
   const handleDeleteBookmark = (id) => {
-    console.log("You clicked delete!!");
-
     fetch(`http://localhost:3000/api/bookmarks/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         token: window.localStorage.getItem("token"),
       },
-    }).then((response) => {
-      console.log("DELETE response:", response);
-    });
+    })
+      .then((response) => {
+        console.log("DELETE response:", response);
+      })
+      .catch((err) => console.log(err.message));
   };
 
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
-      maxWidth: 752,
+      maxWidth: 700,
     },
     demo: {
       backgroundColor: theme.palette.background.paper,
@@ -63,7 +63,7 @@ export const BookmarksList = () => {
         <h1>Bookmarks</h1>
       </header>
       <div className={classes.root}>
-        <Grid className={classes.grid} item xs={4} md={8}>
+        <Grid className={classes.grid} item xs={6} md={6}>
           <div className={classes.demo}>
             <List className={classes.list}>
               {bookMarks.map((el) => (
