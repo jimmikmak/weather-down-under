@@ -25,6 +25,20 @@ export const BookmarksList = () => {
       .then((data) => setBookMarks(data));
   }, []);
 
+  const handleDeleteBookmark = (id) => {
+    console.log("You clicked delete!!");
+
+    fetch(`http://localhost:3000/api/bookmarks/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        token: window.localStorage.getItem("token"),
+      },
+    }).then((response) => {
+      console.log("DELETE response:", response);
+    });
+  };
+
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -36,6 +50,9 @@ export const BookmarksList = () => {
     title: {
       margin: theme.spacing(4, 0, 2),
     },
+    grid: {
+      textAlign: "center",
+    },
   }));
 
   const classes = useStyles();
@@ -46,9 +63,9 @@ export const BookmarksList = () => {
         <h1>Bookmarks</h1>
       </header>
       <div className={classes.root}>
-        <Grid item xs={12} md={6}>
+        <Grid className={classes.grid} item xs={4} md={8}>
           <div className={classes.demo}>
-            <List>
+            <List className={classes.list}>
               {bookMarks.map((el) => (
                 <ListItem key={el.id}>
                   <ListItemAvatar>
@@ -59,7 +76,7 @@ export const BookmarksList = () => {
                   <ListItemText primary={el.city} />
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">
-                      <DeleteIcon />
+                      <DeleteIcon onClick={handleDeleteBookmark} />
                     </IconButton>
                   </ListItemSecondaryAction>
                 </ListItem>
