@@ -32,6 +32,11 @@ To verify that you have everything installed correctly, you should be able to ru
 rails --version
 ```
 
+Starting up the web server: 
+
+```zsh
+rails server
+```
 ## Project Status
 
 Although the application is currently working, it lacks user register  functionality and does not yet call a multi-day weather forecast. 
