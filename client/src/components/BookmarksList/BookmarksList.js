@@ -16,6 +16,7 @@ export const BookmarksList = () => {
 
   useEffect(() => {
     fetch("http://localhost:3000/api/bookmarks", {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         token: window.localStorage.getItem("token"),
@@ -26,6 +27,7 @@ export const BookmarksList = () => {
   }, []);
 
   const handleDeleteBookmark = (id) => {
+    console.log("id", id);
     fetch(`http://localhost:3000/api/bookmarks/${id}`, {
       method: "DELETE",
       headers: {
