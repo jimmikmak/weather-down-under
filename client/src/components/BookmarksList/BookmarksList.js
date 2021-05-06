@@ -35,6 +35,7 @@ export const BookmarksList = () => {
         token: window.localStorage.getItem("token"),
       },
     })
+      .then((response) => response.json())
       .then((response) => {
         console.log("DELETE response:", response);
       })
