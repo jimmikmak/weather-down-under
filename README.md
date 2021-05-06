@@ -32,7 +32,7 @@ To verify that you have everything installed correctly, you should be able to ru
 rails --version
 ```
 
-Starting up the web server: 
+To start up the web server: 
 
 ```zsh
 rails server
