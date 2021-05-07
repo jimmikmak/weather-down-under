@@ -15,11 +15,11 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 
 export const Forecast = () => {
-  let [city, setCity] = useState("");
-  let [unit, setUnit] = useState("imperial");
-  let [responseObj, setResponseObj] = useState({});
-  let [error, setError] = useState(false);
-  let [loading, setLoading] = useState(false);
+  const [city, setCity] = useState("");
+  const [unit, setUnit] = useState("imperial");
+  const [responseObj, setResponseObj] = useState({});
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const saveBookmark = () => {
     fetch("http://localhost:3000/api/bookmarks", {
@@ -43,7 +43,6 @@ export const Forecast = () => {
     setLoading(true);
 
     const uriEncodedCity = encodeURIComponent(city);
-
     fetch(
       `https://community-open-weather-map.p.rapidapi.com/weather?units=${unit}&q=${uriEncodedCity}`,
       {
