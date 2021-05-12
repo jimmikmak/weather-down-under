@@ -38,6 +38,15 @@ export const BookmarksList = () => {
       .then((response) => response.json())
       .then((response) => {
         console.log("DELETE response:", response);
+        fetch("http://localhost:3000/api/bookmarks", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            token: window.localStorage.getItem("token"),
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => setBookMarks(data));
       })
       .catch((err) => console.log(err.message));
   };
@@ -79,7 +88,11 @@ export const BookmarksList = () => {
                   <ListItemText primary={el.city} />
                   <ListItemSecondaryAction>
                     <IconButton edge="end" aria-label="delete">
-                      <DeleteIcon onClick={handleDeleteBookmark} />
+                      <DeleteIcon
+                        onClick={() => {
+                          handleDeleteBookmark(el.id);
+                        }}
+                      />
                     </IconButton>
                   </ListItemSecondaryAction>
                 </ListItem>
