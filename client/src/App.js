@@ -24,9 +24,6 @@ function App() {
           <Route exact path="/bookmarks">
             <BookmarksList />
           </Route>
-          <div>
-            <FiveDayForecast />
-          </div>
         </Switch>
       </div>
     </BrowserRouter>

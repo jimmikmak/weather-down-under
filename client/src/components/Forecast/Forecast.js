@@ -124,6 +124,9 @@ export const Forecast = () => {
         >
           Get Forecast
         </Button>
+        <Button className="btn-1" type="submit" variant="contained">
+          Five-Day Forecast
+        </Button>
         <Button variant="contained" color="primary" onClick={saveBookmark}>
           Bookmark City
         </Button>
@@ -156,12 +159,12 @@ export const Forecast = () => {
             <Grid item xs>
               <Paper className={classes.paper}>FRI</Paper>
             </Grid>
-            <Grid item xs>
+            {/* <Grid item xs>
               <Paper className={classes.paper}>SAT</Paper>
             </Grid>
             <Grid item xs>
               <Paper className={classes.paper}>SUN</Paper>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </form>
