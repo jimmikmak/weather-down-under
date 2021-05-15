@@ -1,12 +1,22 @@
 import React, { useState } from "react";
+import Conditions from "../Conditions/Conditions";
 
 export const FiveDayForecast = () => {
   const [city, setCity] = useState("");
   const [unit, setUnit] = useState("imperial");
   const [responseObj, setResponseObj] = useState({});
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function getFiveDayForecast(e) {
     e.preventDefault();
+    if (city.length === 0) {
+      return setError(true);
+    }
+
+    setError(false);
+    setResponseObj({});
+    setLoading(true);
 
     const uriEncodedCity = encodeURIComponent(city);
     fetch(
@@ -20,11 +30,18 @@ export const FiveDayForecast = () => {
         },
       }
     )
+      .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        if (response.cod !== 200) {
+          throw new Error();
+        }
+        setResponseObj(response);
+        setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        setError(true);
+        setLoading(false);
+        console.log(err.message);
       });
   }
 
