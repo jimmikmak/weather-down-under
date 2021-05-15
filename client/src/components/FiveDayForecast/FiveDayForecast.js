@@ -10,7 +10,7 @@ export const FiveDayForecast = () => {
 
     const uriEncodedCity = encodeURIComponent(city);
     fetch(
-      "https://community-open-weather-map.p.rapidapi.com/forecast?q=Sydney",
+      `https://community-open-weather-map.p.rapidapi.com/forecast?units=${unit}&q=${uriEncodedCity}`,
       {
         method: "GET",
         headers: {
@@ -27,6 +27,7 @@ export const FiveDayForecast = () => {
         console.error(err);
       });
   }
+
   return (
     <div>
       <h1>Five Day Weather Forecast</h1>
