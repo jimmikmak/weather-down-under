@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Conditions from "../Conditions/Conditions";
 
 export const FiveDayForecast = () => {
   const [city, setCity] = useState("");
@@ -8,7 +7,7 @@ export const FiveDayForecast = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  function getFiveDayForecast(e) {
+  const getFiveDayForecast = (e) => {
     e.preventDefault();
     if (city.length === 0) {
       return setError(true);
@@ -24,9 +23,9 @@ export const FiveDayForecast = () => {
       {
         method: "GET",
         headers: {
+          "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
           "x-rapidapi-key":
             "18b0b2afc4mshc736424a2c7d6c3p16c6d8jsnd3bf40f8cfd9",
-          "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
         },
       }
     )
@@ -43,7 +42,7 @@ export const FiveDayForecast = () => {
         setLoading(false);
         console.log(err.message);
       });
-  }
+  };
 
   return (
     <div>

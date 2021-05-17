@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Forecast } from "./components/Forecast/Forecast";
-import { FiveDayForecast } from "./components/FiveDayForecast/FiveDayForecast";
 import { UserForm } from "./components/User/UserForm";
 import { BookmarksList } from "./components/BookmarksList/BookmarksList";
 import { BrowserRouter, Switch, Route } from "react-router-dom";

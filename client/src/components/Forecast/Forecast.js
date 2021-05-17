@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Conditions from "../Conditions/Conditions";
+import { FiveDayForecast } from "../FiveDayForecast/FiveDayForecast";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
@@ -32,7 +33,7 @@ export const Forecast = () => {
     });
   };
 
-  function getForecast(e) {
+  const getForecast = (e) => {
     e.preventDefault();
     if (city.length === 0) {
       return setError(true);
@@ -67,7 +68,7 @@ export const Forecast = () => {
         setLoading(false);
         console.log(err.message);
       });
-  }
+  };
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -124,7 +125,12 @@ export const Forecast = () => {
         >
           Get Forecast
         </Button>
-        <Button className="btn-1" type="submit" variant="contained">
+        <Button
+          className="btn-1"
+          type="submit"
+          variant="contained"
+          onClick={FiveDayForecast}
+        >
           Five-Day Forecast
         </Button>
         <Button variant="contained" color="primary" onClick={saveBookmark}>
